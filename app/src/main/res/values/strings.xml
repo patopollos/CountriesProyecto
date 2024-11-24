@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">CountriesAPI</string>
+    <string name="titulo_app">Trivia de Países</string>
+    <string name="btn_inicia_juego">Iniciar Juego</string>
+    <string name="btn_puntajes">Tabla de Puntajes</string>
+    <string name="txt_banderade">Bandera de</string>
+    <string name="txt_puntaje">Puntaje:</string>
+    <string name="txt_correctas">Respuestas Correctas:</string>
+    <string name="txt_incorrectas">Respuestas Incorrectas:</string>
+    <string name="txt_pregunta">¿Cuál es la capital de</string>
+    <string name="btn_ver_tabla">Ver tabla de Puntajes</string>
+    <string name="txt_terminado">¡Juego Terminado!</string>
+    <string name="txt_puntaje_final">Tu puntaje final es:</string>
+    <string name="txt_nick">Ingresa tu nickname</string>
+    <string name="btn_guardar">Guardar Puntaje</string>
+    <string name="txt_puntajes_titulo">Tabla de Puntajes</string>
+    <string name="txt_puntos">puntos</string>
+    <string name="btn_denuevo">Jugar otra vez</string>
+    <string name="btn_volver">Volver al inicio</string>
+    <string name="txt_no_puntajes">No hay puntajes regstrador aún.</string>
+</resources>
