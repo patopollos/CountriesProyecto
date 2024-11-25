@@ -96,10 +96,10 @@ class CountryViewModel(private val repository: CountryRepository = CountryReposi
         }
 
         // Carga una nueva pregunta
-        viewModelScope.launch {
-            //kotlinx.coroutines.delay(500) // Pausa para mostrar el resultado al usuario
-            loadNewQuestion() // Cargar la siguiente pregunta
-        }
+    //    viewModelScope.launch {
+      //      //kotlinx.coroutines.delay(500) // Pausa para mostrar el resultado al usuario
+        //    loadNewQuestion() // Cargar la siguiente pregunta
+       // }
 
 
     }

@@ -82,7 +82,38 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.datastore.core.android)
     implementation(libs.androidx.datastore.preferences.core.jvm)
+    implementation(libs.androidx.room.ktx)
+
     testImplementation(libs.junit)
+    // Dependencias de pruebas unitarias
+    testImplementation (libs.junit)
+    testImplementation (libs.mockito.core)
+    testImplementation (libs.androidx.core)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation(libs.androidx.animation.core.android)
+    testImplementation (libs.kotlinx.coroutines.test)
+
+
+// Dependencias para pruebas instrumentadas
+    androidTestImplementation (libs.androidx.junit.v115)
+    androidTestImplementation (libs.androidx.espresso.core.v351)
+    androidTestImplementation (libs.androidx.runner)
+    androidTestImplementation (libs.androidx.rules)
+
+    androidTestImplementation (libs.ext.junit.v113)
+    androidTestImplementation (libs.androidx.espresso.core.v340)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

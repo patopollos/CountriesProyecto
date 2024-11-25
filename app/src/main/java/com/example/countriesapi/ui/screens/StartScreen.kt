@@ -1,10 +1,9 @@
 package com.example.countriesapi.ui.screens
 
-//import androidx.compose.ui.text.intl.Locale
-//import androidx.compose.ui.text.intl.LocaleList
-
+import android.annotation.SuppressLint
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,15 +32,16 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.countriesapi.R
 
+@SuppressLint("UseOfNonLambdaOffsetOverload")
 @Composable
 fun StartScreen(navController: NavController) {
-
+    //banderas para banner
     val flags = listOf(
-        R.drawable.argentina, R.drawable.brasil, R.drawable.chile,
+        R.drawable.argentina, R.drawable.brasil, R.drawable.suiza,
         R.drawable.china, R.drawable.cocos, R.drawable.crica,
         R.drawable.espana, R.drawable.eu, R.drawable.holanda,
         R.drawable.inglaterra, R.drawable.japon, R.drawable.mexico,
-        R.drawable.suiza
+        R.drawable.chile
     )
     val scrollState = rememberScrollState()
     val flagOffset = animateFloatAsState(targetValue = -100f, label = "banner") // Hacemos que las banderas se deslicen fuera de la pantalla
@@ -58,7 +59,8 @@ fun StartScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(16.dp)
+            .background(Color(0xFFE8F5E9)),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -85,6 +87,8 @@ fun StartScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
+
+
             // Título de la app
             Text(
                 text = stringResource(id = R.string.titulo_app),
@@ -94,8 +98,9 @@ fun StartScreen(navController: NavController) {
 
             // Botón para iniciar el juego
             Button(
-                onClick = { navController.navigate("quiz") },
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)
+                onClick = { navController.navigate("trivia") },
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp),
+                //colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF7043))  // Naranja
             ) {
                 Text(text = stringResource(id = R.string.btn_inicia_juego))
             }
@@ -103,18 +108,11 @@ fun StartScreen(navController: NavController) {
             // Botón para ir a tabla de puntajes
             Button(
                 onClick = { navController.navigate("high_scores") },
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp)
             ) {
                 Text(text = stringResource(id = R.string.btn_puntajes))
             }
 
-            // Botón para ir a tabla de puntajes
-            Button(
-                onClick = { navController.navigate("high_scores") },
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)
-            ) {
-                Text(text = stringResource(id = R.string.btn_puntajes))
-            }
 
         }
     }
@@ -122,7 +120,7 @@ fun StartScreen(navController: NavController) {
 
 @Preview(showBackground = true)
 @Composable
-fun StartScreenPreview() {
+fun StartScreenPreview(apiLevel: Int = 33) {
     val navController = rememberNavController() // Creamos un NavController simulado
     StartScreen(navController = navController) // Pasamos el NavController simulado
 }

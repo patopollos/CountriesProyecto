@@ -17,5 +17,5 @@
     <string name="txt_puntos">puntos</string>
     <string name="btn_denuevo">Jugar otra vez</string>
     <string name="btn_volver">Volver al inicio</string>
-    <string name="txt_no_puntajes">No hay puntajes regstrador aún.</string>
+    <string name="txt_no_puntajes">No hay puntajes regstrados aún.</string>
 </resources>

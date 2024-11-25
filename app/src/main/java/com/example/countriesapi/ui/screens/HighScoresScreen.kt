@@ -69,14 +69,20 @@ fun HighScoresScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         // Botón para volver al inicio
-        Button(onClick = { navController.navigate("start") }) {
+        Button(onClick = { navController.navigate("start") },
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp)) {
             Text(stringResource(id = R.string.btn_volver))
         }
 
         Spacer(modifier = Modifier.height(20.dp))
 
         // Botón para volver al juego
-        Button(onClick = { navController.navigate("quiz") }) {
+       // Button(onClick = { navController.navigate("quiz") },
+         //   modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)) {
+           // Text(stringResource(id = R.string.btn_denuevo))
+        //}
+        Button(onClick = {navController.navigate("trivia")},
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp)) {
             Text(stringResource(id = R.string.btn_denuevo))
         }
     }
