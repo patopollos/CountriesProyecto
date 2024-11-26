@@ -1,9 +1,9 @@
 package com.example.countriesapi.ui.screens
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -26,16 +25,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.countriesapi.R
+import kotlinx.coroutines.delay
 
 @SuppressLint("UseOfNonLambdaOffsetOverload")
 @Composable
 fun StartScreen(navController: NavController) {
-    //banderas para banner
+    // Lista de banderas para el banner
     val flags = listOf(
         R.drawable.argentina, R.drawable.brasil, R.drawable.suiza,
         R.drawable.china, R.drawable.cocos, R.drawable.crica,
@@ -43,15 +45,19 @@ fun StartScreen(navController: NavController) {
         R.drawable.inglaterra, R.drawable.japon, R.drawable.mexico,
         R.drawable.chile
     )
-    val scrollState = rememberScrollState()
-    val flagOffset = animateFloatAsState(targetValue = -100f, label = "banner") // Hacemos que las banderas se deslicen fuera de la pantalla
 
-    // Se podría tener un efecto de desplazamiento o transición infinita
+    // Creamos un ScrollState para controlar el desplazamiento
+    val scrollState = rememberScrollState()
+
+    // Iniciar el desplazamiento del banner
     LaunchedEffect(true) {
-        // Animación de las banderas
         while (true) {
-            scrollState.scrollTo(0) // Se resetea el desplazamiento para que las banderas continúen
-            kotlinx.coroutines.delay(2000) // Cambiar de posición cada 2 segundos
+            delay(50) // Controla la velocidad del desplazamiento (2000ms = 2 segundos)
+            if (scrollState.value < scrollState.maxValue) {
+                scrollState.scrollTo(scrollState.value + 5) // Desplazar 1 píxel
+            } else {
+                scrollState.scrollTo(0) // Resetea el desplazamiento al llegar al final
+            }
         }
     }
 
@@ -67,14 +73,17 @@ fun StartScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            // Banner animado con banderas
+
+            // Banner animado con las banderas desplazándose
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(150.dp)
-                    .offset(x = flagOffset.value.dp)
             ) {
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(scrollState)
+                    .height(150.dp), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                     flags.forEach {
                         Image(
                             painter = painterResource(id = it),
@@ -87,8 +96,6 @@ fun StartScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-
-
             // Título de la app
             Text(
                 text = stringResource(id = R.string.titulo_app),
@@ -99,21 +106,29 @@ fun StartScreen(navController: NavController) {
             // Botón para iniciar el juego
             Button(
                 onClick = { navController.navigate("trivia") },
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp),
-                //colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF7043))  // Naranja
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp)
             ) {
-                Text(text = stringResource(id = R.string.btn_inicia_juego))
+                Text(text = stringResource(id = R.string.btn_inicia_juego),
+                style = TextStyle(fontSize = 20.sp) )
             }
 
-            // Botón para ir a tabla de puntajes
+            // Botón para ir a la tabla de puntajes
             Button(
                 onClick = { navController.navigate("high_scores") },
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp)
             ) {
-                Text(text = stringResource(id = R.string.btn_puntajes))
+                Text(text = stringResource(id = R.string.btn_puntajes),
+                    style = TextStyle(fontSize = 20.sp) )
             }
 
+            Spacer(modifier = Modifier.height(20.dp)) // Espacio entre botones y el texto final
 
+            // Aquí agregamos el texto de diseño al final
+            Text(
+                text = "Design by Gran Pata", // El texto que deseas poner
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = 14.sp, color = Color.Gray),
+                modifier = Modifier.padding(top = 20.dp) // Agregamos un poco de espacio antes del texto
+            )
         }
     }
 }

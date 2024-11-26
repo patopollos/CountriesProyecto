@@ -1,5 +1,6 @@
 package com.example.countriesapi.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,16 +21,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.countriesapi.BuildConfig
 import com.example.countriesapi.R
 import com.example.countriesapi.model.ScoreEntry
 import com.example.countriesapi.ui.viewmodels.ScoreViewModel
 import com.example.countriesapi.ui.viewmodels.ScoreViewModelFactory
+
 
 @Composable
 fun HighScoresScreen(navController: NavController) {
@@ -38,7 +43,7 @@ fun HighScoresScreen(navController: NavController) {
 
     // Obtenemos la lista de puntajes altos desde el ViewModel
     val highScores by viewModel.highScores.collectAsState(emptyList())
-
+    Log.d("AppMode", BuildConfig.APP_MODE)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -71,19 +76,16 @@ fun HighScoresScreen(navController: NavController) {
         // Botón para volver al inicio
         Button(onClick = { navController.navigate("start") },
             modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp)) {
-            Text(stringResource(id = R.string.btn_volver))
+            Text(stringResource(id = R.string.btn_volver),
+                style = TextStyle(fontSize = 20.sp) )
         }
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Botón para volver al juego
-       // Button(onClick = { navController.navigate("quiz") },
-         //   modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)) {
-           // Text(stringResource(id = R.string.btn_denuevo))
-        //}
         Button(onClick = {navController.navigate("trivia")},
             modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp)) {
-            Text(stringResource(id = R.string.btn_denuevo))
+            Text(stringResource(id = R.string.btn_denuevo),
+                style = TextStyle(fontSize = 20.sp) )
         }
     }
 }

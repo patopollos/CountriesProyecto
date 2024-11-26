@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Countries Quiz</string>
+    <string name="titulo_app">Countries Quiz</string>
+    <string name="btn_inicia_juego">Start Game</string>
+    <string name="btn_puntajes">Scores Board</string>
+    <string name="txt_banderade">Flag of</string>
+    <string name="txt_puntaje">Score:</string>
+    <string name="txt_correctas">Correct Answers:</string>
+    <string name="txt_incorrectas">Wrong Answers:</string>
+    <string name="txt_pregunta">¿Witch is the capital of</string>
+    <string name="btn_ver_tabla">Go to Scores Board</string>
+    <string name="txt_terminado">¡Game Over!</string>
+    <string name="txt_puntaje_final">Your final Score is:</string>
+    <string name="txt_nick">Enter your nickname</string>
+    <string name="btn_guardar">Save Score</string>
+    <string name="txt_puntajes_titulo">Scores Board</string>
+    <string name="txt_puntos">points</string>
+    <string name="btn_denuevo">Play again</string>
+    <string name="btn_volver">Go Home</string>
+    <string name="txt_no_puntajes">There are not scores yet.</string>
+</resources>

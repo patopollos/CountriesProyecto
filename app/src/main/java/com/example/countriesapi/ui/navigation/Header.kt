@@ -23,5 +23,5 @@ fun Header(title:String){
 @Preview(showBackground = true)
 @Composable
 fun PreviewTopBar(){
-    Header("Inicio")
+    Header("Bienvenido")
 }

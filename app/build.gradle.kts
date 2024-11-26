@@ -4,6 +4,23 @@ plugins {
 }
 
 android {
+
+    flavorDimensions += "environment"
+    productFlavors {
+        create("dev") {
+            dimension = "environment"
+            buildConfigField("String", "APP_MODE", "\"Ambiente Dev\"")
+        }
+        create("qa") {
+            dimension = "environment"
+            buildConfigField("String", "APP_MODE", "\"Ambiente QA\"")
+        }
+        create("pro") {
+            dimension = "environment"
+            buildConfigField("String", "APP_MODE", "\"Ambiente PRO\"")
+        }
+    }
+
     namespace = "com.example.countriesapi"
     compileSdk = 34
 
@@ -38,6 +55,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true //Nos permite trabajar con los flavors de compilación
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"

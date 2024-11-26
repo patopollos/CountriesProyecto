@@ -74,13 +74,13 @@ fun CountryTriviaScreen(navController: NavController, viewModel: CountryViewMode
             // Mostrar las respuestas correctas e incorrectas
             Text(
                 stringResource(id = R.string.txt_correctas)+" ${triviaState.correctAnswers}",
-                fontSize = 16.sp,
+                fontSize = 18.sp,
                 fontWeight = FontWeight.Normal
             )
 
             Text(
                 stringResource(id = R.string.txt_incorrectas)+" ${triviaState.incorrectAnswers}",
-                fontSize = 16.sp,
+                fontSize = 18.sp,
                 fontWeight = FontWeight.Normal
             )
 
@@ -119,7 +119,7 @@ fun TriviaOptionButton(option: String, isCorrect: Boolean?, onClick: () -> Unit)
         ),
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text(option, fontSize = 16.sp, color = Color.Black)
+        Text(option, fontSize = 20.sp, color = Color.Black)
     }
 }
 
